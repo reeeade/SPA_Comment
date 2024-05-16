@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Комментарии</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .comment {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment h4 {
+            margin: 0;
+        }
+        .comment p {
+            margin: 5px 0;
+        }
+        .replies {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Комментарии</h2>
+    <div>
+        {% for comment in comments %}
+            <div class="comment">
+                <h4>{{ comment.user.username }}</h4>
+                <p>{{ comment.text }}</p>
+                <small>{{ comment.created_at }}</small>
+                <a href="{% url 'comments:reply' comment.id %}">Ответить</a>
+                {% if comment.comment_set.all %}
+                    <div class="replies">
+                        {% include "replies.html" with replies=comment.comment_set.all %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% for reply in replies %}
+    <div class="comment">
+        <h4>{{ reply.user.username }}</h4>
+        <p>{{ reply.text }}</p>
+        <small>{{ reply.created_at }}</small>
+        <a href="{% url 'comments:reply' reply.id %}">Ответить</a>
+        {% if reply.comment_set.all %}
+            <div class="replies">
+                {% include "replies.html" with replies=reply.comment_set.all %}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}
