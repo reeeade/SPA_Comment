@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Комментарии</title>
     <style>
         body {
@@ -22,6 +23,12 @@
         .replies {
             margin-left: 20px;
         }
+        .image-container {
+            margin-top: 10px;
+        }
+        .file-container {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -32,6 +39,16 @@
                 <h4>{{ comment.user.username }}</h4>
                 <p>{{ comment.text }}</p>
                 <small>{{ comment.created_at }}</small>
+                {% if comment.image %}
+                    <div class="image-container">
+                        <img src="{{ comment.image.url }}" alt="Image" style="max-width: 320px; max-height: 240px;">
+                    </div>
+                {% endif %}
+                {% if comment.file %}
+                    <div class="file-container">
+                        <a href="{{ comment.file.url }}" download>Скачать файл</a>
+                    </div>
+                {% endif %}
                 <a href="{% url 'comments:reply' comment.id %}">Ответить</a>
                 {% if comment.comment_set.all %}
                     <div class="replies">

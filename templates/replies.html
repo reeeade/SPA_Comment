@@ -3,6 +3,16 @@
         <h4>{{ reply.user.username }}</h4>
         <p>{{ reply.text }}</p>
         <small>{{ reply.created_at }}</small>
+        {% if reply.image %}
+            <div class="image-container">
+                <img src="{{ reply.image.url }}" alt="Image" style="max-width: 320px; max-height: 240px;">
+            </div>
+        {% endif %}
+        {% if reply.file %}
+            <div class="file-container">
+                <a href="{{ reply.file.url }}" download>Скачать файл</a>
+            </div>
+        {% endif %}
         <a href="{% url 'comments:reply' reply.id %}">Ответить</a>
         {% if reply.comment_set.all %}
             <div class="replies">

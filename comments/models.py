@@ -15,6 +15,8 @@ class Comment(models.Model):
     text = models.TextField()
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    file = models.FileField(upload_to='files/', blank=True, null=True)
 
     def __str__(self):
         return f'{self.user.username}: {self.text[:20]}'

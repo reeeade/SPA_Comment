@@ -10,7 +10,7 @@ def add_comment(request, parent_id=None):
 
     if request.method == "POST":
         user_form = UserForm(request.POST)
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         if user_form.is_valid() and comment_form.is_valid():
             user = user_form.save()
             comment = comment_form.save(commit=False)
