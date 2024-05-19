@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Комментарии</title>
@@ -12,7 +12,7 @@
             margin-bottom: 20px;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 25px;
         }
         .comment h4 {
             margin: 0;
@@ -22,6 +22,7 @@
         }
         .replies {
             margin-left: 20px;
+            margin-top: 10px;
         }
         .image-container {
             margin-top: 10px;
@@ -29,12 +30,29 @@
         .file-container {
             margin-top: 10px;
         }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination a, .pagination span {
+            margin: 0 2px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            text-decoration: none;
+            color: black;
+        }
+        .pagination .current {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
     <h2>Комментарии</h2>
     <div>
-        {% for comment in comments %}
+        {% for comment in page_obj %}
             <div class="comment">
                 <h4>{{ comment.user.username }}</h4>
                 <p>{{ comment.text }}</p>
@@ -57,6 +75,26 @@
                 {% endif %}
             </div>
         {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Предыдущая</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="current">{{ num }}</span>
+            {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Следующая &rsaquo;</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
     </div>
 </body>
 </html>
