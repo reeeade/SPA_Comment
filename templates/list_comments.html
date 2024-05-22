@@ -47,10 +47,46 @@
             font-weight: bold;
             background-color: #f0f0f0;
         }
+        .sort-controls {
+            margin-bottom: 20px;
+        }
+        .sort-controls a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: black;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 12px;
+        }
+        .sort-controls a:hover {
+            background-color: #f0f0f0;
+        }
+        .add-comment-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+        }
+        .add-comment-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <h2>Комментарии</h2>
+    <a href="{% url 'comments:add' %}" class="add-comment-button">Добавить комментарий</a>
+    <div class="sort-controls">
+        <strong>Сортировать по:</strong>
+        <a href="?sort_by=user__username&sort_order=asc">User Name (A-Z)</a>
+        <a href="?sort_by=user__username&sort_order=desc">User Name (Z-A)</a>
+        <a href="?sort_by=user__email&sort_order=asc">E-mail (A-Z)</a>
+        <a href="?sort_by=user__email&sort_order=desc">E-mail (Z-A)</a>
+        <a href="?sort_by=created_at&sort_order=asc">Дата добавления (Старые-Новые)</a>
+        <a href="?sort_by=created_at&sort_order=desc">Дата добавления (Новые-Старые)</a>
+    </div>
     <div>
         {% for comment in page_obj %}
             <div class="comment">
@@ -79,21 +115,21 @@
 
     <div class="pagination">
         {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; Первая</a>
-            <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Предыдущая</a>
+            <a href="?page=1&sort_by={{ sort_by }}&sort_order={{ sort_order }}">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}">&lsaquo; Предыдущая</a>
         {% endif %}
 
         {% for num in page_obj.paginator.page_range %}
             {% if page_obj.number == num %}
                 <span class="current">{{ num }}</span>
             {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
-                <a href="?page={{ num }}">{{ num }}</a>
+                <a href="?page={{ num }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}">{{ num }}</a>
             {% endif %}
         {% endfor %}
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Следующая &rsaquo;</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}">Следующая &rsaquo;</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}&sort_by={{ sort_by }}&sort_order={{ sort_order }}">Последняя &raquo;</a>
         {% endif %}
     </div>
 </body>

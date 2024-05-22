@@ -1,5 +1,7 @@
-from django.core.paginator import Paginator
+# views.py
+
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from .forms import UserForm, CommentForm
 from .models import Comment
 
@@ -27,10 +29,18 @@ def add_comment(request, parent_id=None):
 
 
 def list_comments(request):
-    comment_list = Comment.objects.filter(parent__isnull=True).order_by('-created_at')
-    paginator = Paginator(comment_list, 3)
+    sort_by = request.GET.get('sort_by', 'created_at')
+    sort_order = request.GET.get('sort_order', 'desc')
+
+    if sort_order == 'asc':
+        comment_list = Comment.objects.filter(parent__isnull=True).order_by(sort_by)
+    else:
+        comment_list = Comment.objects.filter(parent__isnull=True).order_by(f'-{sort_by}')
+
+    paginator = Paginator(comment_list, 25)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'list_comments.html', {'page_obj': page_obj})
+    return render(request, 'list_comments.html',
+                  {'page_obj': page_obj, 'sort_by': sort_by, 'sort_order': sort_order})
