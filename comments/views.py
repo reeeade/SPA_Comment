@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .forms import UserForm, CommentForm
 from .models import Comment
+from .tasks import send_notification_email
 
 
 def add_comment(request, parent_id=None):
@@ -21,6 +22,8 @@ def add_comment(request, parent_id=None):
             if parent:
                 comment.parent = parent
             comment.save()
+            if parent:
+                send_notification_email.delay(comment.id)
             return redirect('comments:list')
     else:
         user_form = UserForm()
