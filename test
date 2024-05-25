@@ -1,2 +1,5 @@
-docker exec -it d0c09bb5a5fc bash
+docker exec -it b3e53ecb7b65 bash
 python manage.py migrate
+
+docker run --name redis -d -p 6379:6379 redis
+docker exec -it spa_comment-redis-1 redis-cli -h 127.0.0.1 -p 6379

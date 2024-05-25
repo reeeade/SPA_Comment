@@ -143,9 +143,10 @@ EMAIL_HOST_PASSWORD = 'lapf ybze wijy wcee'
 DEFAULT_FROM_EMAIL = 'reeeade@gmail.com'
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv("REDIS_URL", "redis://redis:6379/0"),
     }
 }
+
 

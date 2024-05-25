@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   django:
-    build: .
+    build:
+      context: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
@@ -15,7 +16,8 @@ services:
       - .env
 
   celery:
-    build: .
+    build:
+      context: .
     command: celery -A SPA_Comment worker --loglevel=info
     volumes:
       - .:/app

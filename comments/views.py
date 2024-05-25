@@ -34,8 +34,8 @@ def list_comments(request):
     sort_by = request.GET.get('sort_by', 'created_at')
     sort_order = request.GET.get('sort_order', 'desc')
     page_number = request.GET.get('page', 1)
+    cache_key = f'comments_{sort_by}_{sort_order}_{page_number}'
 
-    cache_key = f'comments_{sort_by}_{sort_order}_page_{page_number}'
     page_obj = cache.get(cache_key)
 
     if not page_obj:
@@ -46,10 +46,14 @@ def list_comments(request):
 
         paginator = Paginator(comment_list, 25)
         page_obj = paginator.get_page(page_number)
-        cache.set(cache_key, page_obj, timeout=60 * 10)
-        print("Fetching from DB")
-    else:
-        print("Fetching from Cache")
 
-    return render(request, 'list_comments.html',
-                  {'page_obj': page_obj, 'sort_by': sort_by, 'sort_order': sort_order})
+        cache.set(cache_key, page_obj, timeout=60*10)
+        print("Fetching from database")
+    else:
+        print("Fetching from cache")
+
+    return render(request, 'list_comments.html', {
+        'page_obj': page_obj,
+        'sort_by': sort_by,
+        'sort_order': sort_order
+    })
