@@ -1,2 +1,2 @@
-docker exec -it e3accd367174 bash
+docker exec -it d0c09bb5a5fc bash
 python manage.py migrate

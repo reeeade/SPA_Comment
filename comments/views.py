@@ -1,10 +1,9 @@
-# views.py
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .forms import UserForm, CommentForm
 from .models import Comment
 from .tasks import send_notification_email
+from django.core.cache import cache
 
 
 def add_comment(request, parent_id=None):
@@ -34,16 +33,23 @@ def add_comment(request, parent_id=None):
 def list_comments(request):
     sort_by = request.GET.get('sort_by', 'created_at')
     sort_order = request.GET.get('sort_order', 'desc')
+    page_number = request.GET.get('page', 1)
 
-    if sort_order == 'asc':
-        comment_list = Comment.objects.filter(parent__isnull=True).order_by(sort_by)
+    cache_key = f'comments_{sort_by}_{sort_order}_page_{page_number}'
+    page_obj = cache.get(cache_key)
+
+    if not page_obj:
+        if sort_order == 'asc':
+            comment_list = Comment.objects.filter(parent__isnull=True).order_by(sort_by)
+        else:
+            comment_list = Comment.objects.filter(parent__isnull=True).order_by(f'-{sort_by}')
+
+        paginator = Paginator(comment_list, 25)
+        page_obj = paginator.get_page(page_number)
+        cache.set(cache_key, page_obj, timeout=60 * 10)
+        print("Fetching from DB")
     else:
-        comment_list = Comment.objects.filter(parent__isnull=True).order_by(f'-{sort_by}')
-
-    paginator = Paginator(comment_list, 25)
-
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+        print("Fetching from Cache")
 
     return render(request, 'list_comments.html',
                   {'page_obj': page_obj, 'sort_by': sort_by, 'sort_order': sort_order})
