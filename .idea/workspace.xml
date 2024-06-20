@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15080e35-8aab-4107-a3ae-2f2fc5697d74" name="Changes" comment="Finalize SPA Comments Project&#10;&#10;- Added core features for comment management: adding, viewing, sorting, and pagination.&#10;- Configured infrastructure using Docker, PostgreSQL, Celery, and Redis.&#10;- Implemented caching to improve performance.&#10;- Updated README.md with installation, setup, and usage instructions.&#10;&#10;Project is completed and ready for submission.">
-      <change afterPath="$PROJECT_DIR$/media/files/arc_recovery_packet_v9rNDBh.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/photo_2024-04-27_12-46-17_dUwGVrP.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/photo_2024-04-27_12-46-19_z5R1XJb.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SPA_Comment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SPA_Comment.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SPA_Comment/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SPA_Comment/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" afterPath="$PROJECT_DIR$/test" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +38,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/reeeade/SPA_Comment.git&quot;,
-    &quot;accountId&quot;: &quot;1f690fb5-a142-4698-9079-7df08c64cc67&quot;
+    &quot;accountId&quot;: &quot;23b0c81b-88a6-45e2-af13-52b6c6d09ffa&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -59,34 +52,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.SPA_Comment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Gleb/PycharmProjects/SPA_Comment/comments",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.SPA_Comment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gleb/PycharmProjects/SPA_Comment/comments&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Gleb\PycharmProjects\SPA_Comment\comments" />
@@ -169,8 +163,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
-        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17890.14" />
+        <option value="bundled-python-sdk-5b207ade9991-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17890.14" />
       </set>
     </attachedChunks>
   </component>
@@ -200,6 +194,8 @@
       <workItem from="1716499009689" duration="5286000" />
       <workItem from="1716642692305" duration="16294000" />
       <workItem from="1716660527876" duration="11134000" />
+      <workItem from="1718900346308" duration="1124000" />
+      <workItem from="1718901487029" duration="1481000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit - Setup project structure and implement comments functionality with CAPTCHA&#10;&#10;- Initialize Django project and application structure&#10;- Create User and Comment models to support basic comment functionality&#10;- Implement form classes (UserForm, CommentForm) for user and comment creation&#10;- Add support for nested comments using recursive template inclusion&#10;- Integrate django-simple-captcha for spam protection on comment forms&#10;- Create views for listing comments, adding comments, and replying to comments&#10;- Implement templates for displaying and adding comments (add_comment.html, list_comments.html, replies.html)&#10;- Ensure proper URL routing with namespacing for comments and CAPTCHA&#10;- Add basic CSS styling for templates to improve visual appearance&#10;&#10;This commit sets up the initial structure of the Django project, adds the ability to post comments and replies, and integrates CAPTCHA protection to prevent spam submissions. The project now supports nested comments and basic form validation.">
       <option name="closed" value="true" />
